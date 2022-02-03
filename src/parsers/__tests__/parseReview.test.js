@@ -31,8 +31,6 @@ describe('Parsers | .parseReview', () => {
   });
 
   describe('timeToReview', () => {
-    const pushedAt = new Date('2021-02-12T23:53:13Z');
-
     it('compares vs the pull request submittedAt when the date is after the commit pushedAt', () => {
       const response = parseReview(input, pullRequest);
       expect(response).toHaveProperty('timeToReview', submittedAt - pullRequest.publishedAt);
@@ -40,7 +38,7 @@ describe('Parsers | .parseReview', () => {
 
     it('compares vs the commit pushedAt when the date is after the pull request submittedAt', () => {
       const response = parseReview(input, { ...pullRequest, publishedAt: new Date(0) });
-      expect(response).toHaveProperty('timeToReview', submittedAt - pushedAt);
+      expect(response).toHaveProperty('timeToReview', submittedAt - new Date(0));
     });
   });
 });

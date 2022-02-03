@@ -5,8 +5,7 @@ module.exports = (data = {}, pullRequest) => {
   const author = parseUser(data.author);
   const isOwnPull = author.login === pullRequest.authorLogin;
   const submittedAt = new Date(data.submittedAt);
-  const commitDate = new Date(get(data, 'commit.pushedDate'));
-  const startDate = Math.max(pullRequest.publishedAt, commitDate);
+  const startDate = pullRequest.publishedAt;
 
   return {
     author,

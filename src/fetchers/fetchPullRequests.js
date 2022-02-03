@@ -12,7 +12,6 @@ query($search: String!, $limit: Int!, $after: String) {
             nodes {
               id
               submittedAt
-              commit { pushedDate }
               comments { totalCount }
               author { ...ActorFragment }
             }
